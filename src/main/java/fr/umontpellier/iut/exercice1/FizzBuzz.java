@@ -5,7 +5,19 @@ public class FizzBuzz {
 
 
     public String getValue(int i) {
+        String s = "";
 
+        if (i % 3 == 0) {
+            s = s + "Fizz";
+        }
+        if (i % 5 == 0) {
+            s = s + "Buzz";
+        }
+        if (s.equals("")) {
+            s = String.valueOf(i);
+        }
+    return s;
+        /*
         if (i % 3 == 0 && i % 5 == 0) {
             return "FizzBuzz";
         } else if (i % 5 == 0) { //cas multiple de 5
@@ -15,10 +27,7 @@ public class FizzBuzz {
             return "Fizz";
         } else {
             return String.valueOf(i);
-
-        }
-
-
+        }*/
     }
 
     public String[] computeList(int i) {
