@@ -1,4 +1,4 @@
-package TP2.src.main.java.fr.umontpellier.iut.exercice1;
+package fr.umontpellier.iut.exercice1;
 
 public class App {
 
