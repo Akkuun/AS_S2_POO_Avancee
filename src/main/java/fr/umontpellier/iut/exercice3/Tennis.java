@@ -1,5 +1,7 @@
 package fr.umontpellier.iut.exercice3;
 
+import java.util.Objects;
+
 public class Tennis {
     private final String j1;
     private final String j2;
@@ -13,13 +15,43 @@ public class Tennis {
 
     // incrémente les points du joueur correspondant
     public void gagnerPoint(String joueur) {
-        throw new RuntimeException("La fonction n'est pas encore implémentée !");
+
+        if (Objects.equals(joueur, j1)) {
+            nbPointsJ1++;
+        } else nbPointsJ2++;
+
+
     }
 
     // Retourne le score courant de la partie sous forme de chaîne de caractères
     // Cette fonction interprète le score actuel sous forme d'un texte respectant la nomenclature d'un jeu de tennis
     public String getScore() {
-        throw new RuntimeException("La fonction n'est pas encore implémentée !");
+
+        String[] score = {"0", "15", "30", "40"};
+
+
+        if (nbPointsJ2 > nbPointsJ1 && nbPointsJ2 > 3) {
+            if (nbPointsJ2 == nbPointsJ1 + 2 && nbPointsJ1 >= 3) {
+                return "Nadal gagne";
+            } else if (nbPointsJ2 == nbPointsJ1 + 1 && nbPointsJ1 >= 3) {
+                return "Avantage Nadal";
+            }
+            return "Nadal gagne";
+
+        } else if (nbPointsJ1 > nbPointsJ2 && nbPointsJ1 > 3) {
+            if (nbPointsJ1 == nbPointsJ2 + 2 && nbPointsJ2 >= 3) {
+                return "Federer gagne";
+            } else if (nbPointsJ1 == nbPointsJ2 + 1 && nbPointsJ2 >= 3) {
+                return "Avantage Federer";
+            }
+            return "Federer gagne";
+        }
+
+        if (nbPointsJ1 == nbPointsJ2 && nbPointsJ1 >= 3) {
+            return "Égalité";
+        }
+
+        return score[nbPointsJ1] + " : " + score[nbPointsJ2];
     }
 
 }
