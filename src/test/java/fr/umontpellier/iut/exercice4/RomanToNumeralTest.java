@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Test;
 class RomanToNumeralTest {
     private RomanToNumeral romanToNumeral = new RomanToNumeral();
 
-    @Disabled
+
     @Test
     void I_should_give_1() {
         assertEquals(1, romanToNumeral.getNumeral("I"));
     }
 
 
-    @Disabled
+
     @Test
     void V_should_give_5() {
         assertEquals(5, romanToNumeral.getNumeral("V"));
