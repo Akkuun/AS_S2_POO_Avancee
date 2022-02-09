@@ -1,9 +1,8 @@
-package fr.umontpellier.iut.exo1;
+package fr.umontpellier.iut.exo2.exo1;
 
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GestionEtudiants {
     public static void main(String[] args) {//4
@@ -12,7 +11,8 @@ public class GestionEtudiants {
                 "John",
                 LocalDate.of(2001, 12, 3),
                 "lololeboss@gmail.com",
-                "64 allee de l'enclos"
+                "64 allee de l'enclos",
+                new ArrayList<>()
         );
         lolo.toString();
         Etudiant toto = lolo;//ici toto aura la même réference que toto
@@ -36,14 +36,14 @@ public class GestionEtudiants {
                 "zizou",
                 LocalDate.of(2001, 4, 13),
                 "zozolebouf@gmail.com",
-                "32 allee de l'enclos"
+                "32 allee de l'enclos",new ArrayList<>()
         );
         Etudiant riri = new Etudiant(
                 "riri",
                 "pfff",
                 LocalDate.of(2003, 2, 3),
                 "samere@gmail.com",
-                "9 allee de l'enclos"
+                "9 allee de l'enclos",new ArrayList<>()
         );
 
 
