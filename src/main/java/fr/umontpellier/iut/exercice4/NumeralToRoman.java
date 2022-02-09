@@ -1,9 +1,25 @@
 package fr.umontpellier.iut.exercice4;
 
+import java.util.Arrays;
+
 class NumeralToRoman {
 
     public String getRoman(int number) {
-        String resulat = "";
+
+/*
+        int ref=100000;
+        int value=0;
+        while (number/ref!=1){
+            ref/=10;
+            value=number/ref;
+            if (value==1){
+
+            }
+
+        }
+        */
+
+String resulat="";
 
         if (number == 1) {
             resulat = "I";
@@ -28,12 +44,14 @@ class NumeralToRoman {
         }
         if (number == 8) {
             resulat = "VIII";
-        }if (number == 9) {
+        }
+        if (number == 9) {
             resulat = "IX";
         }
         if (number == 10) {
             resulat = "X";
-        }if (number == 11) {
+        }
+        if (number == 11) {
             resulat = "XI";
         }
         if (number == 50) {
@@ -52,5 +70,6 @@ class NumeralToRoman {
             resulat = "MLXVI";
         }
         return resulat;
+
     }
 }

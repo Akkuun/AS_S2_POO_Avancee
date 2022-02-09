@@ -22,130 +22,130 @@ class RomanToNumeralTest {
     }
 
 
-    @Disabled
+
     @Test
     void X_should_give_10() {
         assertEquals(10, romanToNumeral.getNumeral("X"));
     }
 
 
-    @Disabled
+
     @Test
     void L_should_give_50() {
         assertEquals(50, romanToNumeral.getNumeral("L"));
     }
 
 
-    @Disabled
+
     @Test
     void C_should_give_100() {
         assertEquals(100, romanToNumeral.getNumeral("C"));
     }
 
 
-    @Disabled
+
     @Test
     void D_should_give_500() {
         assertEquals(500, romanToNumeral.getNumeral("D"));
     }
 
 
-    @Disabled
+
     @Test
     void M_should_give_1000() {
         assertEquals(1000, romanToNumeral.getNumeral("M"));
     }
 
-    @Disabled
+
     @Test
     void II_should_give_2() {
         assertEquals(2, romanToNumeral.getNumeral("II"));
     }
 
-    @Disabled
+
     @Test
     void III_should_give_3() {
         assertEquals(3, romanToNumeral.getNumeral("III"));
     }
 
 
-    @Disabled
+
     @Test
     void IV_should_give_4() {
         assertEquals(4, romanToNumeral.getNumeral("IV"));
     }
 
 
-    @Disabled
+
     @Test
     void VI_should_give_6() {
         assertEquals(6, romanToNumeral.getNumeral("VI"));
     }
 
-    @Disabled
+
     @Test
     void VII_should_give_7() {
         assertEquals(7, romanToNumeral.getNumeral("VII"));
     }
 
-    @Disabled
+
     @Test
     void VIII_should_give_8() {
         assertEquals(8, romanToNumeral.getNumeral("VIII"));
     }
 
-    @Disabled
+
     @Test
     void IX_should_give_9() {
         assertEquals(9, romanToNumeral.getNumeral("IX"));
     }
 
 
-    @Disabled
+
     @Test
     void XI_should_give_11() {
         assertEquals(11, romanToNumeral.getNumeral("XI"));
     }
 
-    @Disabled
+
     @Test
     void XL_should_give_40() {
         assertEquals(40, romanToNumeral.getNumeral("XL"));
     }
 
 
-    @Disabled
+
     @Test
     void XC_should_give_90() {
         assertEquals(90, romanToNumeral.getNumeral("XC"));
     }
 
-    @Disabled
+
     @Test
     void CD_should_give_400() {
         assertEquals(400, romanToNumeral.getNumeral("CD"));
     }
 
 
-    @Disabled
+
     @Test
     void CM_should_give_900() {
         assertEquals(900, romanToNumeral.getNumeral("CM"));
     }
 
-    @Disabled
+
     @Test
     void XLIX_should_give_49() {
         assertEquals(49, romanToNumeral.getNumeral("XLIX"));
     }
 
-    @Disabled
+
     @Test
     void XCIX_should_give_99() {
         assertEquals(99, romanToNumeral.getNumeral("XCIX"));
     }
 
-    @Disabled
+@Disabled
     @Test
     void AllNumbersToOneThousand() {
         String[] values = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV",
