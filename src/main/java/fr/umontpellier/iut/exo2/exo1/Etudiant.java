@@ -10,13 +10,13 @@ public class Etudiant { //1
     private ArrayList<Note> listeNote;
 
 
-    public Etudiant(String nom, String prenom, LocalDate date_Naissance, String adresse_mail, String adresse_postale,ArrayList<Note> listenote) {
+    public Etudiant(String nom, String prenom, LocalDate date_Naissance, String adresse_mail, String adresse_postale, ArrayList<Note> listenote) {
         this.nom = nom;
         this.prenom = prenom;
         this.date_Naissance = date_Naissance;
         this.adresse_mail = adresse_mail;
         this.adresse_postale = adresse_postale;
-        this.listeNote=listenote;
+        this.listeNote = listenote;
     }
 
     //2
@@ -48,17 +48,19 @@ public class Etudiant { //1
 
     public double calculerMoyenne() {  //note*coef de la matiere/ somme coef
         double moyenne = 0;
-        int sommecoef = 0;
+        double sommecoef = 0;
 
-        for (int i = 0; i < listeNote.size(); i++) {
-            moyenne += listeNote.get(i).getNote() * listeNote.get(i).getMatiere().getCoefficient();
-            sommecoef += listeNote.get(i).getMatiere().getCoefficient();
+        if (!listeNote.isEmpty()) {
+            for (int i = 0; i < listeNote.size(); i++) {
+                moyenne += listeNote.get(i).getNote()* listeNote.get(i).getMatiere().getCoefficient();
+                sommecoef += listeNote.get(i).getMatiere().getCoefficient();
+            }
+            moyenne = moyenne / sommecoef;
         }
-        moyenne = moyenne / sommecoef;
-
 
         return moyenne;
     }
+
 
 
 }
