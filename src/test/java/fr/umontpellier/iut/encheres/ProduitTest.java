@@ -21,53 +21,82 @@ class ProduitTest {
         produit.demarrerEnchere();
     }
 
-    @Disabled
+
     @Test
-    void test_demmarrer_enchere(){
+    void test_demmarrer_enchere() {
         assertTrue(produit.estDisponible());
     }
 
-    @Disabled
+
     @Test
-    void test_arreter_enchere(){
+    void test_arreter_enchere() {
         produit.arreterEnchere();
         assertFalse(produit.estDisponible());
     }
 
-    @Disabled
+
     @Test
-    void test_verifier_offre_enchere_non_demarree(){
+    void test_verifier_offre_enchere_non_demarree() {
         Produit p = new Produit(0, "", 0, 152);
         assertFalse(p.verifierOffre(o));
     }
 
-    @Disabled
     @Test
-    void test_verifier_offre_quand_pas_d_offre_et_pas_enchere_non_respecte(){
+    void test_verifier_offre_quand_pas_d_offre_et_pas_enchere_non_respecte() {
         assertTrue(produit.verifierOffre(o));
     }
 
     @Disabled
     @Test
-    void test_verifier_offre_quand_il_y_a_offre_et_pas_enchere_non_respecte(){
+    void test_verifier_offre_quand_il_y_a_offre_et_pas_enchere_non_respecte() {
         produit.ajouterOffre(o);
-        assertFalse(produit.verifierOffre(new OffreEnchere(16,900, produit,compte)));
+        assertFalse(produit.verifierOffre(new OffreEnchere(16, 900, produit, compte)));
     }
 
-    @Disabled
+
     @Test
     void ajouterOffre_quand_pas_d_offre() {
         produit.ajouterOffre(o);
         assertSame(produit.getOffreGagnante(), o);
     }
 
-    @Disabled
+
     @Test
     public void ajouterOffre_quand_il_y_a_offre_pas_enchere_non_respecte() {
         produit.ajouterOffre(o);
         OffreEnchere o2 = new OffreEnchere(16, 20, produit, compte);
         produit.ajouterOffre(o2);
-        assertSame(produit.getOffreGagnante(), o);
+        assertSame(o, produit.getOffreGagnante());
     }
+
+    @Test
+    public void ajouterOffre_deux_fois_avec_dernier_gagnat() {
+        produit.ajouterOffre(o);
+        OffreEnchere o2 = new OffreEnchere(16, 20, produit, compte);
+        produit.ajouterOffre(o2);
+        OffreEnchere o3 = new OffreEnchere(17, 20, produit, compte);
+        produit.ajouterOffre(o2);
+        assertSame(o, produit.getOffreGagnante());
+    }
+
+    @Test
+    public void deux_offre_mais_duexieme_gagnant() {
+        produit.ajouterOffre(o);
+        OffreEnchere o2 = new OffreEnchere(18, 21, produit, compte);
+        produit.ajouterOffre(o2);
+        assertSame(o2, produit.getOffreGagnante());
+    }
+    @Test
+    public void trois_offre_mais_duexieme_gagnant() {
+        produit.ajouterOffre(o);
+        OffreEnchere o2 = new OffreEnchere(18, 21, produit, compte);
+        produit.ajouterOffre(o2);
+        OffreEnchere o3 = new OffreEnchere(18, 20, produit, compte);
+        produit.ajouterOffre(o3);
+
+        assertSame(o2, produit.getOffreGagnante());
+    }
+
+
 
 }

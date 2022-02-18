@@ -15,6 +15,10 @@ public class OffreEnchere {
         this.monCompte = monCompte;
     }
 
+    public Produit getProduit() {
+        return produit;
+    }
+
     public int getPrixEnCours() {
         return prixEnCours;
     }
@@ -24,7 +28,7 @@ public class OffreEnchere {
     }
 
     public void setEtatGagnant(boolean etat) {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+       etatGagnant=etat;
     }
 
     @Override
@@ -36,4 +40,14 @@ public class OffreEnchere {
                 ", est gagnante  ? -> " + etatGagnant +
                 '}';
     }
+
+    public void setPrixEnCours(int prixEnCours) {
+        this.prixEnCours = prixEnCours;
+    }
+
+    public boolean isEtatGagnant() {
+        return etatGagnant;
+    }
+
+
 }

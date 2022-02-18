@@ -19,7 +19,24 @@ public class Compte {
         return solde;
     }
 
+    public void crediterCompte(int somme) {
+        solde = solde + somme;
+
+    }
+
     public OffreEnchere creerOffre(Produit produit, int prix, int prixMax) {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        OffreEnchere o = new OffreEnchere(prix, prixMax, produit, this);
+
+        if (solde >= prixMax + produit.getCoutParticipation()
+                && prixMax >= produit.getPrixEncours()
+                && produit.verifierOffre(o))
+        {
+            mesEncheres.add(o);
+            solde=solde-prixMax-produit.getCoutParticipation();
+            return new OffreEnchere(prix, prixMax, produit, this);
+        } else {
+            return null;
+        }
+
     }
 }

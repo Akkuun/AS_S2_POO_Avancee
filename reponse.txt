@@ -1,0 +1,9 @@
+1/
+
+Affin qu'il soit le même pour tout le monde , l'attribut pas d'encher doit être en statique :
+en effet il sera effectif pour la classe entière et pourra êtr modifié par les objets de la classe produit.
+
+Les deux méthodes doit aussi être changé en static.
+
+2/
+

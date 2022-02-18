@@ -12,25 +12,50 @@ class CompteTest {
     private Produit produit;
 
     @BeforeEach
-    public void init(){
+    public void init() {
         compte = new Compte("toto", 100);
-        produit = new Produit(0, "", 0, 152);
+        produit = new Produit(0, "", 3, 5);
     }
 
-    @Disabled
+
     @Test
-    public void test_creer_offre_prix_superieur_au_prix_max(){
-        OffreEnchere o = compte.creerOffre(produit,50,40);
+    public void test_creer_offre_prix_superieur_au_prix_max() {
+        OffreEnchere o = compte.creerOffre(produit, 50, 40);
         assertNull(o);
     }
 
-    @Disabled
+
     @Test
-    public void test_creer_offre_solde_insuffisant_pour_prix_max_plus_cout_participation(){
-        OffreEnchere o = compte.creerOffre(produit,50,100);
+    public void test_creer_offre_solde_insuffisant_pour_prix_max_plus_cout_participation() {
+        OffreEnchere o = compte.creerOffre(produit, 50, 100);
         assertNull(o);
     }
+
 
     // complétez ici avec vos tests
+    @Test
+    public void test_creditercompte() {
+
+        compte.crediterCompte(23);
+        assertEquals(123, compte.getSolde());
+    }
+
+    @Test
+    public void test_creditercompte_avec_somme_negative() {
+
+        compte.crediterCompte(-10);
+        assertEquals(90, compte.getSolde());
+    }
+
+
+    @Test
+    public void test_creer_offre_qui_marche() {
+
+        produit.demarrerEnchere();
+        OffreEnchere o = compte.creerOffre(produit, 20, 26);
+        assertNotEquals(null, o);
+    }
+
+
 
 }
