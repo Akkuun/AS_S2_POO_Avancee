@@ -15,6 +15,10 @@ public class OffreEnchere {
         this.monCompte = monCompte;
     }
 
+    public Compte getMonCompte() {
+        return monCompte;
+    }
+
     public Produit getProduit() {
         return produit;
     }

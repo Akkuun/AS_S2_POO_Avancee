@@ -24,6 +24,24 @@ public class Compte {
 
     }
 
+    @Override
+    public String toString() {
+        return "Compte{" +
+                "pseudo='" + pseudo + '\'' +
+                ", solde=" + solde +
+                ", mesEncheres=" + mesEncheres +
+                ", produitsAchetés=" + produitsAchetés +
+                '}';
+    }
+
+    public ArrayList<Produit> getProduitsAchetés() {
+        return produitsAchetés;
+    }
+
+    public void setSolde(int solde) {
+        this.solde = solde;
+    }
+
     public OffreEnchere creerOffre(Produit produit, int prix, int prixMax) {
         OffreEnchere o = new OffreEnchere(prix, prixMax, produit, this);
 

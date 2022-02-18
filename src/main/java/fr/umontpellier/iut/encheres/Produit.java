@@ -43,8 +43,12 @@ public class Produit {
     }
 
     public void arreterEnchere() {
+
         disponible = false;
 
+        offreGagante.getMonCompte().setSolde(offreGagante.getPrixMax() - getPrixEncours());
+
+        offreGagante.getMonCompte().getProduitsAchetés().add(this);
     }
 
     // question 5
@@ -58,7 +62,7 @@ public class Produit {
     // pré-requis : l'offre passée en paramètre est valide
     public void ajouterOffre(OffreEnchere o) {
         listeOffre.add(o);
-        if (listeOffre.size()==1) {
+        if (listeOffre.size() == 1) {
 
             o.setEtatGagnant(true);
             offreGagante = o;
@@ -66,7 +70,7 @@ public class Produit {
         } else if (offreGagante.getPrixMax() >= o.getPrixMax()) {
             offreGagante.setPrixEnCours(o.getPrixMax());
 
-        } else if(offreGagante.getPrixMax() < o.getPrixMax()){
+        } else if (offreGagante.getPrixMax() < o.getPrixMax()) {
             int nouveauPrix = o.getPrixEnCours() >= offreGagante.getPrixMax() ? o.getPrixEnCours() : offreGagante.getPrixEnCours();
             offreGagante.setEtatGagnant(false);
             o.setEtatGagnant(true);
