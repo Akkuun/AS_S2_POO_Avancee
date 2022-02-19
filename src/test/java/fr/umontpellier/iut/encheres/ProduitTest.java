@@ -30,6 +30,11 @@ class ProduitTest {
 
     @Test
     void test_arreter_enchere() {
+
+
+        produit.ajouterOffre(o);
+
+
         produit.arreterEnchere();
         assertFalse(produit.estDisponible());
     }
@@ -86,6 +91,7 @@ class ProduitTest {
         produit.ajouterOffre(o2);
         assertSame(o2, produit.getOffreGagnante());
     }
+
     @Test
     public void trois_offre_mais_duexieme_gagnant() {
         produit.ajouterOffre(o);
@@ -96,7 +102,6 @@ class ProduitTest {
 
         assertSame(o2, produit.getOffreGagnante());
     }
-
 
 
 }

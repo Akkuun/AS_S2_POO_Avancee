@@ -43,12 +43,12 @@ public class Produit {
     }
 
     public void arreterEnchere() {
-
-        disponible = false;
-
         offreGagante.getMonCompte().setSolde(offreGagante.getPrixMax() - getPrixEncours());
 
         offreGagante.getMonCompte().getProduitsAchetés().add(this);
+        disponible = false;
+
+
     }
 
     // question 5
@@ -90,8 +90,13 @@ public class Produit {
     }
 
     public boolean estDisponible() {
-        return disponible;
+
+        if (disponible){
+            return true;
+        }
+        return false;
     }
+
 
     // vérifie si l'offre est correcte
     public boolean verifierOffre(OffreEnchere offre) {
