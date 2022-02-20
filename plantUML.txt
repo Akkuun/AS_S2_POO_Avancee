@@ -1,0 +1,68 @@
+@startuml
+
+
+
+class Compte{
+-pseudo: String
+-produitAchetetés : ArrayList <Produit>
+-mesEnchere : ArrayList <OffreEnchere>
+-solde : int
+-----
+-compte (String, int)
+-creerOffre(Produit, int, int)
+-----
++solde()
++getProduitAchetés()
++getSolde()
++crediterCompte(int)
++toString()
++setSolde()
+}
+
+class OffreEnchere{
+-monCompte  : Compte
+-etatGagant  :boolean
+-prixEnCours  : int
+-produit : Produit
+-prixMax : int
+-----
++OffreEnchere(int, int, Produit, Compte)
+-----
++getPrixEnCours()
++getPrixMax()
++isEtatGagnant()
++setPrixEnCours()
++toString()
++getMonCompte()
+}
+
+class Produit{
+-numero : int
+-description : String
+-prixInitial : int
+{static} coutParticipation : int
+-listeOffre : ArrayList <OffreEnchere>
+-offreGagante : OffreEnchere
+-disponible : boolean
+-----
+~Produit(int, String, int, int )
+-----
++getNumero()
+{static} getPasEnchere()
+{static} setPasEnchere(int)
++demarrerEnchere()
++arreterEnchere()
++getPrixEnCours()
++ajouterOffre(OffreEnchere)
++getCoutParticipation()
++estDisponible()
++verifierOffre()
++hashCode()
+}
+
+OffreEnchere "many" *-- "1" Compte : proposer
+OffreEnchere "1" *--  "1" Produit : composer
+Compte "1" o-- "many" Produit : possède
+
+
+@enduml
