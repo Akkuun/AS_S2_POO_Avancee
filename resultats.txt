@@ -1,0 +1,11 @@
+fr.umontpellier.iut.encheres.CompteTest
+  ! Erreur de compilation
+fr.umontpellier.iut.encheres.OffreEnchereTest
+  ✗ test_set_etat_gagnant_rembourse_bien_le_perdant
+  ✓ test_set_etat_gagnant_met_correctement_a_jour_l_etat_de_l_offre
+fr.umontpellier.iut.encheres.ProduitTest
+  ! Erreur de compilation
+
+1 / 2 tests réussis
+(2 erreurs de compilation)
+Note: 0/4
