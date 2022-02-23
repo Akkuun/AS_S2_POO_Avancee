@@ -51,11 +51,11 @@ class ProduitTest {
         assertTrue(produit.verifierOffre(o));
     }
 
-    @Disabled
+
     @Test
     void test_verifier_offre_quand_il_y_a_offre_et_pas_enchere_non_respecte() {
         produit.ajouterOffre(o);
-        assertFalse(produit.verifierOffre(new OffreEnchere(16, 900, produit, compte)));
+        assertTrue(produit.verifierOffre(new OffreEnchere(16, 900, produit, compte)));
     }
 
 
