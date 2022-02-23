@@ -46,7 +46,7 @@ public class Compte {
         OffreEnchere o = new OffreEnchere(prix, prixMax, produit, this);
 
         if (solde >= prixMax + produit.getCoutParticipation()
-                && prixMax >= produit.getPrixEncours()
+                && prixMax >= produit.getPrixEnCours()
                 && produit.verifierOffre(o))
         {
             mesEncheres.add(o);

@@ -1,7 +1,6 @@
 package fr.umontpellier.iut.encheres;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class Produit {
@@ -44,7 +43,10 @@ public class Produit {
 
     public void arreterEnchere() {
 
-        offreGagante.getMonCompte().crediterCompte((offreGagante.getPrixMax() - getPrixEncours()));
+        offreGagante.getMonCompte().setSolde(offreGagante.getPrixMax() - getPrixEnCours());
+
+
+        offreGagante.getMonCompte().crediterCompte((offreGagante.getPrixMax() - getPrixEnCours()));
         offreGagante.getMonCompte().getProduitsAchetés().add(this);
         disponible = false;
 
@@ -52,7 +54,7 @@ public class Produit {
     }
 
     // question 5
-    public int getPrixEncours() { //son prix initial va changer par rapport au prix de l'offre gagante actuelle
+    public int getPrixEnCours() { //son prix initial va changer par rapport au prix de l'offre gagante actuelle
 
         return prixInitial;
 
@@ -63,14 +65,14 @@ public class Produit {
     public void ajouterOffre(OffreEnchere o) {
         listeOffre.add(o);
         if (listeOffre.size() == 1) {
-            o.getMonCompte().crediterCompte(this.getPrixEncours());
+            o.getMonCompte().crediterCompte(this.getPrixEnCours());
             o.setEtatGagnant(true);
             offreGagante = o;
 
         }else if (offreGagante.getPrixMax() < o.getPrixMax()) {
             offreGagante.setPrixEnCours(o.getPrixEnCours());
-            offreGagante.getMonCompte().crediterCompte(this.getPrixEncours());
-            o.getMonCompte().crediterCompte(-this.getPrixEncours());
+            offreGagante.getMonCompte().crediterCompte(this.getPrixEnCours());
+            o.getMonCompte().crediterCompte(-this.getPrixEnCours());
             int nouveauPrix = o.getPrixEnCours() >= offreGagante.getPrixMax() ? o.getPrixEnCours() : offreGagante.getPrixEnCours();
             offreGagante.setEtatGagnant(false);
             o.setEtatGagnant(true);
@@ -115,14 +117,14 @@ public class Produit {
 
 
             if (listeOffre.isEmpty()) { //si première offre
-                if (offre.getPrixEnCours() >= this.getPrixEncours()) {
+                if (offre.getPrixEnCours() >= this.getPrixEnCours()) {
                     isGood = true;
                 }
 
-            } else if (offre.getPrixEnCours() >= pasEnchere + this.getPrixEncours()) {
+            } else if (offre.getPrixEnCours() >= pasEnchere + this.getPrixEnCours()) {
                 isGood = true;
             }
-            else if(offre.getPrixEnCours()<this.getPrixEncours()){
+            else if(offre.getPrixEnCours()<this.getPrixEnCours()){
                 isGood=false;
             }
         }
