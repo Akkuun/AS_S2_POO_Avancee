@@ -93,6 +93,19 @@ class ProduitTest {
     }
 
     @Test
+    public void test_arreter_enchere_le_produit_n_est_plus_disponible() {
+        produit.ajouterOffre(o);
+        OffreEnchere o2 = new OffreEnchere(18, 21, produit, compte);
+        produit.ajouterOffre(o2);
+        OffreEnchere o3 = new OffreEnchere(18, 20, produit, compte);
+        produit.ajouterOffre(o3);
+
+        assertSame(o2, produit.getOffreGagnante());
+    }
+
+
+
+    @Test
     public void trois_offre_mais_duexieme_gagnant() {
         produit.ajouterOffre(o);
         OffreEnchere o2 = new OffreEnchere(18, 21, produit, compte);

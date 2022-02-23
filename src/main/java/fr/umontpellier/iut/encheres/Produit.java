@@ -43,8 +43,8 @@ public class Produit {
     }
 
     public void arreterEnchere() {
-        offreGagante.getMonCompte().setSolde(offreGagante.getPrixMax() - getPrixEncours());
 
+        offreGagante.getMonCompte().crediterCompte((offreGagante.getPrixMax() - getPrixEncours()));
         offreGagante.getMonCompte().getProduitsAchetés().add(this);
         disponible = false;
 
@@ -63,19 +63,24 @@ public class Produit {
     public void ajouterOffre(OffreEnchere o) {
         listeOffre.add(o);
         if (listeOffre.size() == 1) {
-
+            o.getMonCompte().crediterCompte(this.getPrixEncours());
             o.setEtatGagnant(true);
             offreGagante = o;
 
-        } else if (offreGagante.getPrixMax() >= o.getPrixMax()) {
-            offreGagante.setPrixEnCours(o.getPrixMax());
-
-        } else if (offreGagante.getPrixMax() < o.getPrixMax()) {
+        }else if (offreGagante.getPrixMax() < o.getPrixMax()) {
+            offreGagante.setPrixEnCours(o.getPrixEnCours());
+            offreGagante.getMonCompte().crediterCompte(this.getPrixEncours());
+            o.getMonCompte().crediterCompte(-this.getPrixEncours());
             int nouveauPrix = o.getPrixEnCours() >= offreGagante.getPrixMax() ? o.getPrixEnCours() : offreGagante.getPrixEnCours();
             offreGagante.setEtatGagnant(false);
             o.setEtatGagnant(true);
             offreGagante = o;
             offreGagante.setPrixEnCours(nouveauPrix);
+
+        }
+        else if (offreGagante.getPrixMax() >= o.getPrixMax()) {
+            offreGagante.setPrixEnCours(o.getPrixMax());
+
         }
 
 
@@ -94,7 +99,11 @@ public class Produit {
         if (disponible){
             return true;
         }
-        return false;
+        else {
+            arreterEnchere();
+            return false;
+        }
+
     }
 
 
@@ -112,6 +121,9 @@ public class Produit {
 
             } else if (offre.getPrixEnCours() >= pasEnchere + this.getPrixEncours()) {
                 isGood = true;
+            }
+            else if(offre.getPrixEnCours()<this.getPrixEncours()){
+                isGood=false;
             }
         }
 
