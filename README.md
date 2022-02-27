@@ -160,3 +160,7 @@ Vous êtes chargés de développer un système de gestion d'employés. Chaque em
    * Un `Representant` puisse être instantialbe en tant que `Representant`, un `Technicien` en tant que `Technicien`, etc.
    * Les duplications de code entre les _setters_ des différents builders soient supprimées.
    * Il n'y ait aucun _cast_ dans votre code (conversion explicite d'un type à un autre, à la main).
+
+
+lien diagramme de classe :
+www.plantuml.com/plantuml/png/XLB1RjGm4BtxAwmzjQfyu5hrK415d122XRlZlEnQSiRjU8n02_zE72UA8r0t9zipxyrxy_AOnBBaCIWNR4hwQNmEyHSkob3t4PcHxhKdKQQp2VfUzp5t0Sh0dH4YwRcgbJBpf-vEaAysMCzunrbkRZT8K_g4NUMFMeOVuSxadGTTbBh3CC191X-jEwFMNZ9kRb-RKiXibuIj4rrPtyTn13jlm-JAdVqmCDuEGq6dnf7O_BEq-kGZDOIBCS8fEWy-igLadKnDrvLK0Tz1FJ8NJp-c8-CpnpvxkOgly0-sO-yioHpAD_Ao4Y3L_RVYY_hIquQrXZCKffSCNWMKxAXRRbLDkkRc2vuP2IHLKO-0avMwior0PIYE7MFkfhGq5B6R75wPm4yavUOJfg7_sqeZO_b5zSDlOtIJxhwmhMt_tchSiBMs1FNFUsjPRNYj3s_quS6OE1qE-wv7K9_7y1S0

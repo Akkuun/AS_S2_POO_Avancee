@@ -1,0 +1,25 @@
+- il y a besoin que d'un changement dans le programme si la formule du calcul change
+
+5) Si l'objet est déclaré de type Employé et instencié en tant que fabriquant il n'a accès au fonction de Employé
+
+Mais s'il est déclaré en Fabriquant et instancié en Fabriquant il a bien accès à fabriquerProduit
+
+6)
+Il faudra un changment pour la classe commericial,
+Et un autre changement pour la classe fabriquant et technicien dans la formule getSalaireBrut car tous
+deux utilisent cette même fonction
+
+
+
+4) Afin de pouvoir utiliser des fonction présente dans une autre classe dans une autre structuration de données
+nous oblige à réaliser une délégation, donc de créer un objet qui ne va servir à récuperer une fonction
+en particulier
+
+
+5) avantages :
+-nous permet d'utiliser des fonctions qui ne sont pas du tout présente dans la classe de base
+-evite la dette du programme ou la duplication du code
+
+Desavantage:
+-nous fait instancier un objet pour "rien" , juste pour accéder à ses méthodes
+-peut être une source d'erreurs si on commence à travailler sur plusieurs classes en même temps
