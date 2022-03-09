@@ -1,6 +1,7 @@
 package fr.umontpellier.iut.partie1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Taquin {
     private int[][] tableau;
@@ -10,7 +11,20 @@ public class Taquin {
     }
 
     public boolean estGagnant() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        int valueNextcase = 0;
+        boolean isGood = true;
+        for (int i = 0; i < tableau.length; i++) {
+            for (int j = 0; j < tableau[i].length; j++) {
+                valueNextcase = i + j + 1;
+
+
+                if (tableau[i][j] == valueNextcase-1) {
+                    isGood = false;
+                }
+            }
+        }
+        return isGood;
+
     }
 
     public ArrayList<Taquin> genererFils() {
@@ -24,4 +38,42 @@ public class Taquin {
         throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
     }
 
+    @Override
+    public String toString() {//tableau.lengh = longueur
+        String result = "";
+        result += "+";
+
+        for (int i = 0; i < tableau.length * tableau[0].length; i++) { //tableau[0] = largeur
+            result += "-";
+        }
+        result += "+";
+
+        for (int j = 0; j < tableau.length; j++) {
+            result += " " + "\n" + "|";
+            for (int k = 0; k < tableau[j].length; k++) {
+                result += " " + tableau[j][k] + " ";
+            }
+            result += " " + "|" + "\n";
+        }
+        result += "+";
+        for (int i = 0; i < tableau.length * tableau[0].length; i++) { //tableau[0] = largeur
+            result += "-";
+        }
+        result += "+";
+        return result;
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Taquin taquin = (Taquin) o;
+        return Arrays.deepEquals(tableau, taquin.tableau);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.deepHashCode(tableau);
+    }
 }
