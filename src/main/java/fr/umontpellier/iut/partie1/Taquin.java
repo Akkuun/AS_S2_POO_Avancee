@@ -13,12 +13,13 @@ public class Taquin {
     public boolean estGagnant() {
         int valueNextcase = 0;
         boolean isGood = true;
+        if (tableau.length != tableau[0].length) return false;
         for (int i = 0; i < tableau.length; i++) {
             for (int j = 0; j < tableau[i].length; j++) {
                 valueNextcase = i + j + 1;
 
 
-                if (tableau[i][j] == valueNextcase-1) {
+                if (tableau[i][j] == valueNextcase - 1) {
                     isGood = false;
                 }
             }
@@ -35,7 +36,17 @@ public class Taquin {
      * @return un tableau [i,j] si tableau[i][j]==0
      */
     public int[] trouverTrou() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+int[] coordoneeTrou =new int[2];
+        for (int i = 0; i < tableau.length; i++) {
+            for (int j = 0; j < tableau[i].length; j++) {
+               if (tableau[i][j]==0) {
+                   coordoneeTrou[0]=i;
+                   coordoneeTrou[1]=j;
+                   break;
+               }
+            }
+        }
+        return coordoneeTrou;
     }
 
     @Override
