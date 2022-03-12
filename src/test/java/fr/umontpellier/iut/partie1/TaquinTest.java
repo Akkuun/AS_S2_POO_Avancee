@@ -1,6 +1,5 @@
 package fr.umontpellier.iut.partie1;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -22,9 +21,10 @@ class TaquinTest {
         Taquin t = new Taquin(data);
         assertTrue(t.estGagnant());
     }
+
     @Test
     public void test_est_gagnant_vrai_4_X_4() {
-        int[][] data = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11,12}, {13, 0, 14, 15}};
+        int[][] data = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 0, 14, 15}};
         Taquin t = new Taquin(data);
         assertFalse(t.estGagnant());
     }
@@ -55,7 +55,7 @@ class TaquinTest {
 
     @Test
     public void test_trouver_trou_coin_hd_4_X_4() {
-        int[][] data = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11,12}, {13, 0, 14, 15}};
+        int[][] data = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 0, 14, 15}};
         Taquin t = new Taquin(data);
         int[] res = t.trouverTrou();
         int[] res2 = {3, 1};
@@ -72,7 +72,7 @@ class TaquinTest {
         assertEquals(t, t2);
     }
 
-    @Disabled
+
     @Test
     public void test_generer_Fils_coin_3_X_3() {
         int[][] data = {{1, 2, 0}, {4, 5, 3}, {7, 8, 6}};
@@ -87,5 +87,32 @@ class TaquinTest {
         res2.add(fils1);
         res2.add(fils2);
         assertTrue(res.containsAll(res2) && res2.containsAll(res));
+    }
+
+    @Test
+    public void test_generer_Fils_coin_4_X_4() {
+        int[][] data = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 0, 11}, {12, 13, 14, 15}};
+        Taquin t = new Taquin(data);
+        ArrayList<Taquin> res = t.genererFils();
+
+        ArrayList<Taquin> listeFilsTest = new ArrayList<>();
+        int[][] datafils1 = {{1, 2, 3, 4}, {5, 6, 0, 8}, {9, 10, 7, 11}, {12, 13, 14, 15}};
+        Taquin fils1 = new Taquin(datafils1);
+        listeFilsTest.add(fils1);
+        int[][] datafils2 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 0, 10, 11}, {12, 13, 14, 15}};
+        Taquin fils2 = new Taquin(datafils2);
+        listeFilsTest.add(fils2);
+
+        int[][] datafils3 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 0}, {12, 13, 14, 15}};
+        Taquin fils3 = new Taquin(datafils3);
+        listeFilsTest.add(fils3);
+
+        int[][] datafils4 = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 14, 11}, {12, 13, 0, 15}};
+        Taquin fils4 = new Taquin(datafils4);
+        listeFilsTest.add(fils3);
+
+
+
+        assertTrue( res.containsAll(listeFilsTest));
     }
 }
