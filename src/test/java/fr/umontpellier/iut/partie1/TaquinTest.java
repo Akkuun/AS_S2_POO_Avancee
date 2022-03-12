@@ -26,21 +26,21 @@ class TaquinTest {
     public void test_est_gagnant_vrai_4_X_4() {
         int[][] data = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11,12}, {13, 0, 14, 15}};
         Taquin t = new Taquin(data);
-        assertTrue(t.estGagnant());
+        assertFalse(t.estGagnant());
     }
 
     @Test
     public void test_est_gagnant_faux_2_X_3() {
         int[][] data = {{1, 2, 3}, {4, 5, 0}};
         Taquin t = new Taquin(data);
-        assertFalse(t.estGagnant());
+        assertTrue(t.estGagnant());
     }
 
     @Test
     public void test_est_gagnant_faux_1_X_3() {
-        int[][] data = {{1}, {2}, {3}};
+        int[][] data = {{1}, {2}, {0}};
         Taquin t = new Taquin(data);
-        assertFalse(t.estGagnant());
+        assertTrue(t.estGagnant());
     }
 
 

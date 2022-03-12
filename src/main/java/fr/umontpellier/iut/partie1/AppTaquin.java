@@ -1,5 +1,7 @@
 package fr.umontpellier.iut.partie1;
 
+import java.util.Arrays;
+
 public class AppTaquin {
     public static void main(String[] args) {
         int[][] data1 = {{1, 2, 3,4}, {5, 6, 7,8}, {9, 10, 11,12},{13,14,15,0}};
@@ -9,5 +11,6 @@ public class AppTaquin {
         Taquin taquin2 = new Taquin(data2);
         System.out.println(taquin2);
         System.out.println(taquin2.estGagnant());
+        System.out.println(Arrays.toString(taquin1.trouverTrou()));
     }
 }

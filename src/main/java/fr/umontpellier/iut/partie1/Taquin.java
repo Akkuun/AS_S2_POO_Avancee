@@ -11,39 +11,48 @@ public class Taquin {
     }
 
     public boolean estGagnant() {
-        int valueNextcase = 0;
-        boolean isGood = true;
-        if (tableau.length != tableau[0].length) return false;
+        int valueNextcase = 2;
+        boolean isGood = false;
         for (int i = 0; i < tableau.length; i++) {
-            for (int j = 0; j < tableau[i].length; j++) {
-                valueNextcase = i + j + 1;
+            for (int j = 0; j < tableau[i].length; j++) { //on parcourt la matrice
 
-
-                if (tableau[i][j] == valueNextcase - 1) {
-                    isGood = false;
+                if (tableau[i][j] != valueNextcase - 1 &&
+                        (i != tableau.length - 1 || j != tableau[0].length - 1))
+                { //si la case est  = à valeur case +1 alors
+                    return false;
                 }
+                valueNextcase++;
             }
         }
-        return isGood;
 
+        return true;
     }
 
     public ArrayList<Taquin> genererFils() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        int[] coordonneeTrou = trouverTrou();
+        int i = coordonneeTrou[0];
+        int j = coordonneeTrou[1];
+        ArrayList<Taquin> listeFils = new ArrayList<>();
+
+        if (j > 0) {            //je peux bouger le trou à gauche
+
+        }
+
+        return listeFils;
     }
 
     /**
      * @return un tableau [i,j] si tableau[i][j]==0
      */
     public int[] trouverTrou() {
-int[] coordoneeTrou =new int[2];
+        int[] coordoneeTrou = new int[2];
         for (int i = 0; i < tableau.length; i++) {
             for (int j = 0; j < tableau[i].length; j++) {
-               if (tableau[i][j]==0) {
-                   coordoneeTrou[0]=i;
-                   coordoneeTrou[1]=j;
-                   break;
-               }
+                if (tableau[i][j] == 0) {
+                    coordoneeTrou[0] = i;
+                    coordoneeTrou[1] = j;
+                    break;
+                }
             }
         }
         return coordoneeTrou;
