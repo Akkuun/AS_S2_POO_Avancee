@@ -1,6 +1,8 @@
 package fr.umontpellier.iut.partie1;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Couple {
 
@@ -13,12 +15,30 @@ public class Couple {
     }
 
     public void mettreAJour(ArrayList<Couple> frontiere, ArrayList<Taquin> dejaVus) {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+
+
+
+
+
+
+
     }
 
     public ArrayList<Taquin> getListeDeMouvements() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        ArrayList<Taquin> listeToutLesTaquins = new ArrayList<Taquin>();
+
+        Couple coupleActuel = new Couple(taquin, predecesseur);
+        listeToutLesTaquins.add(coupleActuel.getTaquin());
+        while (coupleActuel.predecesseur != null) {
+
+            coupleActuel = predecesseur;
+            listeToutLesTaquins.add(coupleActuel.getTaquin());
+
+        }
+        Collections.reverse(listeToutLesTaquins);
+        return listeToutLesTaquins;
     }
+
 
     public Taquin getTaquin() {
         return taquin;

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CoupleTest {
-    @Disabled
+
     @Test
     public void test_couple_getListeDeMouvements() {
         int[][] data1 = {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};
