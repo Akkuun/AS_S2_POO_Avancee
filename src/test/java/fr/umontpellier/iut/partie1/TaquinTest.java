@@ -115,4 +115,20 @@ class TaquinTest {
 
         assertTrue( res.containsAll(listeFilsTest));
     }
+    @Test
+    public void test_generer_fils_1x5(){
+
+        int [][]data= {{1,2,0,3,4}};
+        Taquin t=new Taquin(data);
+        ArrayList<Taquin> result= t.genererFils();
+        ArrayList<Taquin> listeFils=new ArrayList<>();
+
+        int[][] fils1 ={{1,0,2,3,4}};
+        int[][] fils2 ={{1,2,3,0,4}};
+        Taquin Fils1= new Taquin(fils1);
+        Taquin Fils2=new Taquin(fils2);
+        listeFils.add(Fils1);
+        listeFils.add(Fils2);
+        assertTrue( result.containsAll(listeFils));
+    }
 }

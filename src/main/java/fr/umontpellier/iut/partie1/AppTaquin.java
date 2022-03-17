@@ -1,18 +1,20 @@
 package fr.umontpellier.iut.partie1;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AppTaquin {
     public static void main(String[] args) {
-        int[][] data1 = {{1, 2, 3,4}, {5, 6, 7,8}, {9, 10, 11,12},{13,14,15,0}};
-        int[][] data2 = {{1, 2, 3}, {4,0,6}, {7,5,8}};
 
-        Taquin taquin1 = new Taquin(data1);
+        int[][] dataPR = {{1, 2, 0}, {4, 5, 3}, {7, 8, 6}};     //Résolvable
+        int[][] dataR = {{1, 2, 3}, {4, 5, 6}, {7, 0, 8}};      //Résolvable
+        int[][] petitT = {{2 , 0} , {1 , 3}};                   //Petit résolvable
+        int[][] impossible = {{1,2,3}, {4,5,6}, {8,7,0}};       //Trop long et irrésolvable
+        int[][] impossible2 = {{0, 2}, {3, 1}};
+        int[][] UnPeuLongMaisBon = {{2,3,8}, {7,6,4}, {5,1,0}};
 
-        Taquin taquin2 = new Taquin(data2);
-
-
-        System.out.println(Arrays.toString(taquin2.trouverTrou()));
-        System.out.println(taquin2.genererFils());
+        Contexte c1= new Contexte(new Taquin(UnPeuLongMaisBon));
+        c1.resoudre();
+        System.out.println(c1.getSolution());
     }
 }

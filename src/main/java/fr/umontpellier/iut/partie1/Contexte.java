@@ -13,7 +13,32 @@ public class Contexte {
     }
 
     public void resoudre() {
-        throw new RuntimeException("Méthode non implémentée ! Effacez cette ligne et écrivez le code nécessaire");
+        int compteur= 0;
+        ArrayList<Couple> frontiere = new ArrayList<>();
+
+        ArrayList<Taquin> dejaVus = new ArrayList<>();
+        Couple couple = new Couple(taquinInitial, null);
+        frontiere.add(couple);
+        dejaVus.add(taquinInitial);
+
+
+        while (!frontiere.isEmpty()&&!frontiere.get(0).getTaquin().estGagnant()) { //tant que la frontière est pas vide
+            frontiere.remove(0).mettreAJour(frontiere,dejaVus);
+            compteur++;
+            System.out.println(compteur);
+        }
+        if (frontiere.get(0).getTaquin().estGagnant()){ //si le couple est gagnant on met dans la solution tout les mouvement
+            solution=frontiere.get(0).getListeDeMouvements();
+            frontiere.clear();
+        }
+}
+
+    @Override
+    public String toString() {
+        return "Contexte{" +
+                "taquinInitial=" + taquinInitial +
+                ", solution=" + solution +
+                '}';
     }
 
     public ArrayList<Taquin> getSolution() {

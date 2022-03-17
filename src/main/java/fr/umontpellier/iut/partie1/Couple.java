@@ -1,5 +1,6 @@
 package fr.umontpellier.iut.partie1;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -16,10 +17,14 @@ public class Couple {
 
     public void mettreAJour(ArrayList<Couple> frontiere, ArrayList<Taquin> dejaVus) {
 
-
-
-
-
+       ArrayList<Taquin> fils= taquin.genererFils(); //on génère les fils du taquin
+        for (Taquin taquin:fils) { //on parcours tout les taquin fils
+            if (!dejaVus.contains(taquin)){ //si deja vu ne contient pas le taquin fils
+                dejaVus.add(taquin); //on l'ajoute dans déjà vu
+                frontiere.add(new Couple(taquin,this)); //et on ajoute dans le frontier le nouveau couple
+                //du fils avec this en prédécesseur
+            }
+        }
 
 
     }
@@ -31,7 +36,8 @@ public class Couple {
         listeToutLesTaquins.add(coupleActuel.getTaquin());
         while (coupleActuel.predecesseur != null) {
 
-            coupleActuel = predecesseur;
+            coupleActuel = coupleActuel.predecesseur;
+
             listeToutLesTaquins.add(coupleActuel.getTaquin());
 
         }

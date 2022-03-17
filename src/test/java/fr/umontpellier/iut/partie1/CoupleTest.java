@@ -28,7 +28,7 @@ class CoupleTest {
         assertEquals(res, res2);
     }
 
-    @Disabled
+
     @Test
     public void test_couple_mise_a_jour() {
         int[][] data = {{1, 2, 0}, {4, 5, 3}, {7, 8, 6}};
