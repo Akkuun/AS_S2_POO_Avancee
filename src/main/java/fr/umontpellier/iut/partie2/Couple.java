@@ -5,21 +5,21 @@ import java.util.Collections;
 
 public class Couple {
 
-    private Taquin taquin;
+    private JeuPuzzle jeuxInitial;
     private Couple predecesseur;
 
-    public Couple(Taquin taquin, Couple predecesseur) {
-        this.taquin = taquin;
+    public Couple(JeuPuzzle jeu, Couple predecesseur) {
+        this.jeuxInitial = jeu;
         this.predecesseur = predecesseur;
     }
 
-    public void mettreAJour(ArrayList<Couple> frontiere, ArrayList<Taquin> dejaVus) {
+    public void mettreAJour(ArrayList<Couple> frontiere, ArrayList<JeuPuzzle> dejaVus) {
 
-       ArrayList<Taquin> fils= taquin.genererFils(); //on génère les fils du taquin
-        for (Taquin taquin:fils) { //on parcours tout les taquin fils
-            if (!dejaVus.contains(taquin)){ //si deja vu ne contient pas le taquin fils
-                dejaVus.add(taquin); //on l'ajoute dans déjà vu
-                frontiere.add(new Couple(taquin,this)); //et on ajoute dans le frontier le nouveau couple
+       ArrayList<? extends JeuPuzzle> fils= jeuxInitial.genererFils(); //on génère les fils du taquin
+        for (JeuPuzzle jeux:fils) { //on parcours tout les taquin fils
+            if (!dejaVus.contains(jeux)){ //si deja vu ne contient pas le taquin fils
+                dejaVus.add(jeux); //on l'ajoute dans déjà vu
+                frontiere.add(new Couple(jeux,this)); //et on ajoute dans le frontier le nouveau couple
                 //du fils avec this en prédécesseur
             }
         }
@@ -27,24 +27,24 @@ public class Couple {
 
     }
 
-    public ArrayList<Taquin> getListeDeMouvements() {
-        ArrayList<Taquin> listeToutLesTaquins = new ArrayList<Taquin>();
+    public ArrayList<JeuPuzzle> getListeDeMouvements() {
+        ArrayList<JeuPuzzle> listeMouvemement = new ArrayList<JeuPuzzle>();
 
-        Couple coupleActuel = new Couple(taquin, predecesseur);
-        listeToutLesTaquins.add(coupleActuel.getTaquin());
+        Couple coupleActuel = new Couple(jeuxInitial, predecesseur);
+        listeMouvemement.add(coupleActuel.getJeuxInitial());
         while (coupleActuel.predecesseur != null) {
 
             coupleActuel = coupleActuel.predecesseur;
 
-            listeToutLesTaquins.add(coupleActuel.getTaquin());
+            listeMouvemement.add(coupleActuel.getJeuxInitial());
 
         }
-        Collections.reverse(listeToutLesTaquins);
-        return listeToutLesTaquins;
+        Collections.reverse(listeMouvemement);
+        return listeMouvemement;
     }
 
 
-    public Taquin getTaquin() {
-        return taquin;
+    public JeuPuzzle getJeuxInitial() {
+        return jeuxInitial;
     }
 }

@@ -4,44 +4,47 @@ import java.util.ArrayList;
 
 public class Contexte {
 
-    private Taquin taquinInitial;
-    private ArrayList<Taquin> solution;
 
-    public Contexte(Taquin taquinInitial) {
-        this.taquinInitial = taquinInitial;
+    private JeuPuzzle jeuInitial;
+    private ArrayList<JeuPuzzle> solution;
+
+    public Contexte(JeuPuzzle jeuInitial) {
+        this.jeuInitial = jeuInitial;
         solution = new ArrayList<>();
     }
 
     public void resoudre() {
-        int compteur= 0;
+        int compteur = 0;
         ArrayList<Couple> frontiere = new ArrayList<>();
 
-        ArrayList<Taquin> dejaVus = new ArrayList<>();
-        Couple couple = new Couple(taquinInitial, null);
+        ArrayList<JeuPuzzle> dejaVus = new ArrayList<>();
+        Couple couple = new Couple(jeuInitial, null);
         frontiere.add(couple);
-        dejaVus.add(taquinInitial);
+        dejaVus.add(jeuInitial);
 
 
-        while (!frontiere.isEmpty()&&!frontiere.get(0).getTaquin().estGagnant()) { //tant que la frontière est pas vide
-            frontiere.remove(0).mettreAJour(frontiere,dejaVus);
+        while (!frontiere.isEmpty() && !frontiere.get(0).getJeuxInitial().estGagnant()) { //tant que la frontière est pas vide
+            frontiere.remove(0).mettreAJour(frontiere, dejaVus);
             compteur++;
-            System.out.println(compteur);
+            System.out.println(frontiere.size());
         }
-        if (frontiere.get(0).getTaquin().estGagnant()){ //si le couple est gagnant on met dans la solution tout les mouvement
-            solution=frontiere.get(0).getListeDeMouvements();
-            frontiere.clear();
+
+        if (!frontiere.isEmpty() && frontiere.get(0).getJeuxInitial().estGagnant()) { //si le couple est gagnant on met dans la solution tout les mouvement
+            solution = frontiere.get(0).getListeDeMouvements();
+
+
         }
-}
+    }
 
     @Override
     public String toString() {
         return "Contexte{" +
-                "taquinInitial=" + taquinInitial +
+                "jeuxInitial=" + jeuInitial +
                 ", solution=" + solution +
                 '}';
     }
 
-    public ArrayList<Taquin> getSolution() {
+    public ArrayList<JeuPuzzle> getSolution() {
         return solution;
     }
 }
