@@ -27,7 +27,7 @@ public class Taquin  implements JeuPuzzle{
         return true;
     }
 
-    public ArrayList<Taquin> genererFils() {
+    public ArrayList<? extends JeuPuzzle> genererFils() {
         int[] coordonneeTrou = trouverTrou();
         int cordonnee_i_trou = coordonneeTrou[0];
         int cordonnee_j_trou = coordonneeTrou[1];
