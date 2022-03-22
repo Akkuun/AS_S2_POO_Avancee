@@ -66,39 +66,121 @@ public class Hanoi implements JeuPuzzle {
         int index_DerniereValeur3 = indexDerniereValeurPasNull(tour_3);
 
 
-
-        if (valeurTour1 != 0) { // on fait 1--> 2
-            if (valeurTour1 < valeurTour2 || valeurTour2 == 0) {
-                ArrayList<Integer> copieTour1 =copieListe(tour_1);
-                ArrayList<Integer> copieTour2 =copieListe(tour_2);
-                ArrayList<Integer> copieTour3 =copieListe(tour_3);
+        if (valeurTour1 != 0) { //pillier1fils
+            if (valeurTour1 < valeurTour2 || valeurTour2 == 0) {// on fait 1--> 2
+                ArrayList<Integer> copieTour1 = copieListe(tour_1);
+                ArrayList<Integer> copieTour2 = copieListe(tour_2);
+                ArrayList<Integer> copieTour3 = copieListe(tour_3);
                 if (valeurTour2 == 0) {
 
-                    copieTour2.add(index_DerniereValeur2 , valeurTour1);
+                    copieTour2.add(index_DerniereValeur2, valeurTour1);
                     copieTour1.remove(index_DerniereValeur1);
-                    Hanoi hanoi_fils_1_2 = new Hanoi(copieTour1,copieTour2,copieTour3,taille);
+                    Hanoi hanoi_fils_1_2 = new Hanoi(copieTour1, copieTour2, copieTour3, taille);
                     fils.add(hanoi_fils_1_2);
 
                 } else {
 
-                    copieTour2.add(index_DerniereValeur2+1, valeurTour1);
+                    copieTour2.add(index_DerniereValeur2 + 1, valeurTour1);
                     copieTour1.remove(index_DerniereValeur1);
-                    Hanoi hanoi_fils_1_2 = new Hanoi(copieTour1,copieTour2,copieTour3, taille);
+                    Hanoi hanoi_fils_1_2 = new Hanoi(copieTour1, copieTour2, copieTour3, taille);
                     fils.add(hanoi_fils_1_2);
 
                 }
             }
-            if (valeurTour1 < valeurTour3 || valeurTour3 == 0) {
-                if (valeurTour3 == 0) {
-                    tour_3.add(index_DerniereValeur3, valeurTour1);
-                    tour_1.remove(index_DerniereValeur1);
-                    Hanoi hanoi_fils_1_3 = new Hanoi(tour_1, tour_2, tour_3, taille);
+            if (valeurTour1 < valeurTour3 || valeurTour3 == 0) { // on fait 1--> 3
+                ArrayList<Integer> copieTour1 = copieListe(tour_1);
+                ArrayList<Integer> copieTour2 = copieListe(tour_2);
+                ArrayList<Integer> copieTour3 = copieListe(tour_3);
+                if (valeurTour3 == 0) { //si la valeur est 0
+                    copieTour3.add(index_DerniereValeur3, valeurTour1);
+                    copieTour1.remove(index_DerniereValeur1);
+                    Hanoi hanoi_fils_1_3 = new Hanoi(copieTour1, copieTour2, copieTour3, taille);
                     fils.add(hanoi_fils_1_3);
+                } else { //si la valeur est diff de 0
+                    copieTour3.add(index_DerniereValeur3 + 1, valeurTour1);//on passe la valeur vers l'autre pillier
+                    copieTour1.remove(index_DerniereValeur1);//on retire de la liste la valeur qu'on vient d'nevoyer
+                    Hanoi hanoi_fils_1_3 = new Hanoi(copieTour1,copieTour2,copieTour3, taille);
+                    fils.add(hanoi_fils_1_3);
+                }
+
+            }
+        }
+        if (valeurTour2 != 0) { // on fait le pillier 2
+
+            if (valeurTour2 < valeurTour1 || valeurTour1 == 0) { // 2--> 1
+                ArrayList<Integer> copieTour1 = copieListe(tour_1);
+                ArrayList<Integer> copieTour2 = copieListe(tour_2);
+                ArrayList<Integer> copieTour3 = copieListe(tour_3);
+                if (valeurTour1 == 0) {
+
+                    copieTour1.add(index_DerniereValeur1, valeurTour2);
+                    copieTour2.remove(index_DerniereValeur2);
+                    Hanoi hanoi_fils_2_1 = new Hanoi(copieTour1, copieTour2, copieTour3, taille);
+                    fils.add(hanoi_fils_2_1);
+
                 } else {
-                    tour_3.add(index_DerniereValeur3 + 1, valeurTour1);
-                    tour_1.remove(index_DerniereValeur1);
-                    Hanoi hanoi_fils_1_3 = new Hanoi(tour_1, tour_2, tour_3, taille);
+
+                    copieTour2.add(index_DerniereValeur2 + 1, valeurTour1);
+                    copieTour1.remove(index_DerniereValeur1);
+                    Hanoi hanoi_fils_2_1 = new Hanoi(copieTour1, copieTour2, copieTour3, taille);
+                    fils.add(hanoi_fils_2_1);
+
+                }
+            }
+            if (valeurTour2 < valeurTour3 || valeurTour3 == 0) { // on fait 2-->3
+                ArrayList<Integer> copieTour1 = copieListe(tour_1);
+                ArrayList<Integer> copieTour2 = copieListe(tour_2);
+                ArrayList<Integer> copieTour3 = copieListe(tour_3);
+                if (valeurTour3 == 0) { //si la valeur est 0
+                    copieTour3.add(index_DerniereValeur3, valeurTour2);
+                    copieTour2.remove(index_DerniereValeur2);
+                    Hanoi hanoi_fils_2_3 = new Hanoi(copieTour1,copieTour2,copieTour3, taille);
+                    fils.add(hanoi_fils_2_3);
+                } else { //si la valeur est diff de 0
+                    copieTour3.add(index_DerniereValeur3 + 1, valeurTour2);//on passe la valeur vers l'autre pillier
+                    copieTour2.remove(index_DerniereValeur2);//on retire de la liste la valeur qu'on vient d'nevoyer
+                    Hanoi hanoi_fils_1_3 = new Hanoi(copieTour1,copieTour2,copieTour3, taille);
                     fils.add(hanoi_fils_1_3);
+                }
+
+            }
+        }
+        if (valeurTour2 != 0) { // on fait le pillier 3
+
+            if (valeurTour3 < valeurTour1 || valeurTour1 == 0) { // 3--> 1
+                ArrayList<Integer> copieTour1 = copieListe(tour_1);
+                ArrayList<Integer> copieTour2 = copieListe(tour_2);
+                ArrayList<Integer> copieTour3 = copieListe(tour_3);
+                if (valeurTour1 == 0) {
+
+                    copieTour1.add(index_DerniereValeur1, valeurTour3);
+                    copieTour3.remove(index_DerniereValeur3);
+                    Hanoi hanoi_fils_3_1 = new Hanoi(copieTour1, copieTour2, copieTour3, taille);
+                    fils.add(hanoi_fils_3_1);
+
+                } else {
+
+                    copieTour1.add(index_DerniereValeur1 + 1, valeurTour1);
+                    copieTour3.remove(index_DerniereValeur3);
+                    Hanoi hanoi_fils_3_1 = new Hanoi(copieTour1, copieTour2, copieTour3, taille);
+                    fils.add(hanoi_fils_3_1);
+
+                }
+            }
+            if (valeurTour3 < valeurTour2 || valeurTour2 == 0) { // on fait 3-->2
+                ArrayList<Integer> copieTour1 = copieListe(tour_1);
+                ArrayList<Integer> copieTour2 = copieListe(tour_2);
+                ArrayList<Integer> copieTour3 = copieListe(tour_3);
+                if (valeurTour3 == 0) { //si la valeur est 0
+                    copieTour2.add(index_DerniereValeur2, valeurTour3);
+                    copieTour3.remove(index_DerniereValeur3);
+                    Hanoi hanoi_fils_3_2 = new Hanoi(copieTour1,copieTour2,copieTour3, taille);
+                    fils.add(hanoi_fils_3_2);
+                } else { //si la valeur est diff de 0
+                    copieTour2.add(index_DerniereValeur2 + 1, valeurTour3);//on passe la valeur vers l'autre pillier
+                    copieTour3.remove(index_DerniereValeur3);//on retire de la liste la valeur qu'on vient d'nevoyer
+                    Hanoi hanoi_fils_3_2 = new Hanoi(copieTour1,copieTour2,copieTour3, taille);
+                    fils.add(hanoi_fils_3_2);
                 }
 
             }
@@ -137,8 +219,8 @@ public class Hanoi implements JeuPuzzle {
 
     }
 
-    public ArrayList<Integer>copieListe(ArrayList<Integer> copie){
-        ArrayList<Integer>finallcopie= new ArrayList<>();
+    public ArrayList<Integer> copieListe(ArrayList<Integer> copie) {
+        ArrayList<Integer> finallcopie = new ArrayList<>();
         finallcopie.addAll(copie);
         return finallcopie;
     }
