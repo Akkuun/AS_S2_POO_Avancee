@@ -13,17 +13,17 @@ public class AppJeuxPuzzle {
 
 
 
-        ArrayList<Integer> tour1 = new ArrayList<>();
-        ArrayList<Integer> tour2 = new ArrayList<>();
-        ArrayList<Integer> tour3 = new ArrayList<>();
-        tour3.add(1);
-        tour3.add(2);
-        tour3.add(3);
+        ArrayList<Integer> tour1 = new ArrayList<>(3);
+        ArrayList<Integer> tour2 = new ArrayList<>(3);
+        ArrayList<Integer> tour3 = new ArrayList<>(3);
+        tour1.add(3);
+        tour1.add(1);
+
 
         tour2.add(2);
 
 
         JeuPuzzle h=new Hanoi(tour1,tour2,tour3,3);
-        System.out.println(h.estGagnant());
+        ArrayList<? extends JeuPuzzle> listfils= h.genererFils();
     }
 }
