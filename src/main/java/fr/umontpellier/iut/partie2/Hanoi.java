@@ -3,6 +3,7 @@ package fr.umontpellier.iut.partie2;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Hanoi implements JeuPuzzle {
 
@@ -24,6 +25,8 @@ public class Hanoi implements JeuPuzzle {
             t.add(taille - i);
         }
         tour_1 = t;
+        tour_2= new ArrayList<>(3);
+        tour_3=new ArrayList<>(3);
         this.taille = taille;
     }
 
@@ -45,12 +48,7 @@ public class Hanoi implements JeuPuzzle {
 
     @Override
     public boolean estGagnant() {
-        ArrayList<Integer> finalHanoi = new ArrayList<>();
-        finalHanoi.add(1);
-        finalHanoi.add(2);
-        finalHanoi.add(3);
-
-        return tour_1.isEmpty() && tour_2.isEmpty() && tour_3.equals(finalHanoi);
+        return tour_3.size()==taille;
     }
 
     @Override
@@ -120,8 +118,8 @@ public class Hanoi implements JeuPuzzle {
 
                 } else {
 
-                    copieTour2.add(index_DerniereValeur2 + 1, valeurTour1);
-                    copieTour1.remove(index_DerniereValeur1);
+                    copieTour1.add(index_DerniereValeur1 + 1, valeurTour2);
+                    copieTour2.remove(index_DerniereValeur2);
                     Hanoi hanoi_fils_2_1 = new Hanoi(copieTour1, copieTour2, copieTour3, taille);
                     fils.add(hanoi_fils_2_1);
 
@@ -145,7 +143,7 @@ public class Hanoi implements JeuPuzzle {
 
             }
         }
-        if (valeurTour2 != 0) { // on fait le pillier 3
+        if (valeurTour3 != 0) { // on fait le pillier 3
 
             if (valeurTour3 < valeurTour1 || valeurTour1 == 0) { // 3--> 1
                 ArrayList<Integer> copieTour1 = copieListe(tour_1);
@@ -160,7 +158,7 @@ public class Hanoi implements JeuPuzzle {
 
                 } else {
 
-                    copieTour1.add(index_DerniereValeur1 + 1, valeurTour1);
+                    copieTour1.add(index_DerniereValeur1 + 1, valeurTour3);
                     copieTour3.remove(index_DerniereValeur3);
                     Hanoi hanoi_fils_3_1 = new Hanoi(copieTour1, copieTour2, copieTour3, taille);
                     fils.add(hanoi_fils_3_1);
@@ -177,7 +175,7 @@ public class Hanoi implements JeuPuzzle {
                     Hanoi hanoi_fils_3_2 = new Hanoi(copieTour1,copieTour2,copieTour3, taille);
                     fils.add(hanoi_fils_3_2);
                 } else { //si la valeur est diff de 0
-                    copieTour2.add(index_DerniereValeur2 + 1, valeurTour3);//on passe la valeur vers l'autre pillier
+                    copieTour2.add(valeurTour3);//on passe la valeur vers l'autre pillier
                     copieTour3.remove(index_DerniereValeur3);//on retire de la liste la valeur qu'on vient d'nevoyer
                     Hanoi hanoi_fils_3_2 = new Hanoi(copieTour1,copieTour2,copieTour3, taille);
                     fils.add(hanoi_fils_3_2);
@@ -225,5 +223,26 @@ public class Hanoi implements JeuPuzzle {
         return finallcopie;
     }
 
+    @Override
+    public String toString() {
+        return "Hanoi{" +
+                "tour_1=" + tour_1 +
+                ", tour_2=" + tour_2 +
+                ", tour_3=" + tour_3 +
+                ", taille=" + taille +
+                '}';
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hanoi hanoi = (Hanoi) o;
+        return taille == hanoi.taille && Objects.equals(tour_1, hanoi.tour_1) && Objects.equals(tour_2, hanoi.tour_2) && Objects.equals(tour_3, hanoi.tour_3);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tour_1, tour_2, tour_3, taille);
+    }
 }
