@@ -66,21 +66,24 @@ public class Hanoi implements JeuPuzzle {
         int index_DerniereValeur3 = indexDerniereValeurPasNull(tour_3);
 
 
-        ArrayList<Integer> copieTour1 =copieListe(tour_1);
-        ArrayList<Integer> copieTour2 =copieListe(tour_2);
-        ArrayList<Integer> copieTour3 =copieListe(tour_3);
+
         if (valeurTour1 != 0) { // on fait 1--> 2
             if (valeurTour1 < valeurTour2 || valeurTour2 == 0) {
+                ArrayList<Integer> copieTour1 =copieListe(tour_1);
+                ArrayList<Integer> copieTour2 =copieListe(tour_2);
+                ArrayList<Integer> copieTour3 =copieListe(tour_3);
                 if (valeurTour2 == 0) {
-                    tour_2.add(index_DerniereValeur2 + 1, valeurTour1);
-                    tour_1.remove(index_DerniereValeur1);
-                    Hanoi hanoi_fils_1_2 = new Hanoi(tour_1, tour_2, tour_3, taille);
+
+                    copieTour2.add(index_DerniereValeur2 , valeurTour1);
+                    copieTour1.remove(index_DerniereValeur1);
+                    Hanoi hanoi_fils_1_2 = new Hanoi(copieTour1,copieTour2,copieTour3,taille);
                     fils.add(hanoi_fils_1_2);
 
                 } else {
-                    tour_2.add(index_DerniereValeur2, valeurTour1);
-                    tour_1.remove(index_DerniereValeur1);
-                    Hanoi hanoi_fils_1_2 = new Hanoi(tour_1, tour_2, tour_3, taille);
+
+                    copieTour2.add(index_DerniereValeur2+1, valeurTour1);
+                    copieTour1.remove(index_DerniereValeur1);
+                    Hanoi hanoi_fils_1_2 = new Hanoi(copieTour1,copieTour2,copieTour3, taille);
                     fils.add(hanoi_fils_1_2);
 
                 }
