@@ -24,6 +24,12 @@ public class AppJeuxPuzzle {
 
         System.out.println(han.getSolution());
 
+        int[][] UnPeuLongMaisBon = {{2,3,8}, {7,6,4}, {5,1,0}};
+
+        Contexte tauin= new Contexte(new Taquin(UnPeuLongMaisBon));
+        tauin.resoudre();
+        System.out.println(tauin.getSolution());
+
 
     }
 }
