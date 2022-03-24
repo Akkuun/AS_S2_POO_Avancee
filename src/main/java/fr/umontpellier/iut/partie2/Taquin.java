@@ -3,13 +3,14 @@ package fr.umontpellier.iut.partie2;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Taquin  implements JeuPuzzle{
+public class Taquin implements JeuPuzzle {
     private int[][] tableau;
 
     public Taquin(int[][] tableau) {
         this.tableau = tableau;
     }
 
+    @Override
     public boolean estGagnant() {
         int valueNextcase = 2;
         boolean isGood = false;
@@ -26,7 +27,7 @@ public class Taquin  implements JeuPuzzle{
 
         return true;
     }
-
+    @Override
     public ArrayList<? extends JeuPuzzle> genererFils() {
         int[] coordonneeTrou = trouverTrou();
         int cordonnee_i_trou = coordonneeTrou[0];
@@ -46,19 +47,19 @@ public class Taquin  implements JeuPuzzle{
             Taquin deplacement_droite = new Taquin(taquin_pour_deplacement_a_droite);
             listeFils.add(deplacement_droite);
         }
-        if (cordonnee_i_trou>0 ) //peut bouger le trou en haut
+        if (cordonnee_i_trou > 0) //peut bouger le trou en haut
         {
             int[][] taquin_pour_deplacement_haut = getCopyTableau();
-            taquin_pour_deplacement_haut[cordonnee_i_trou][cordonnee_j_trou]=taquin_pour_deplacement_haut[cordonnee_i_trou-1][cordonnee_j_trou];
-            taquin_pour_deplacement_haut[cordonnee_i_trou-1][cordonnee_j_trou]=0;
-            Taquin deplacement_haut= new Taquin(taquin_pour_deplacement_haut);
+            taquin_pour_deplacement_haut[cordonnee_i_trou][cordonnee_j_trou] = taquin_pour_deplacement_haut[cordonnee_i_trou - 1][cordonnee_j_trou];
+            taquin_pour_deplacement_haut[cordonnee_i_trou - 1][cordonnee_j_trou] = 0;
+            Taquin deplacement_haut = new Taquin(taquin_pour_deplacement_haut);
             listeFils.add(deplacement_haut);
         }
-        if (cordonnee_i_trou<tableau.length-1) //peut bouger le trou en bas
+        if (cordonnee_i_trou < tableau.length - 1) //peut bouger le trou en bas
         {
             int[][] taquin_pour_deplacement_bas = getCopyTableau();
-            taquin_pour_deplacement_bas[cordonnee_i_trou][cordonnee_j_trou]=taquin_pour_deplacement_bas[cordonnee_i_trou+1][cordonnee_j_trou];
-            taquin_pour_deplacement_bas[cordonnee_i_trou+1][cordonnee_j_trou]=0;
+            taquin_pour_deplacement_bas[cordonnee_i_trou][cordonnee_j_trou] = taquin_pour_deplacement_bas[cordonnee_i_trou + 1][cordonnee_j_trou];
+            taquin_pour_deplacement_bas[cordonnee_i_trou + 1][cordonnee_j_trou] = 0;
             Taquin deplacement_bas = new Taquin(taquin_pour_deplacement_bas);
             listeFils.add(deplacement_bas);
         }

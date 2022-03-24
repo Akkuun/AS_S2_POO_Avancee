@@ -3,6 +3,9 @@ package fr.umontpellier.iut.partie2;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SudokuTest {
@@ -44,6 +47,18 @@ class SudokuTest {
     public void test_sudoku22_est_gagnant_faux_pbLignes() {
         Sudoku sudoku = new Sudoku(grille_sudoku_nongagnante_ligne());
         assertFalse(sudoku.estGagnant());
+    }
+    @Test
+    public void test_trouvercoordonetrou(){
+        int[][] sudo=  new int[][]{
+                {4, 1, 2, 3},
+                {0, 0, 1, 4},
+                {0, 3, 4, 1},
+                {1, 4, 3, 2}
+        };
+
+        Sudoku s= new Sudoku(sudo);
+
     }
 
 }
