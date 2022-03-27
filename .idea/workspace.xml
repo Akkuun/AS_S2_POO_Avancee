@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34a5ed22-d813-4351-be49-1868f2dba5bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reponses.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/umontpellier/iut/AppJeuxPuzzle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/umontpellier/iut/Contexte.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/umontpellier/iut/Couple.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/umontpellier/iut/Hanoi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/umontpellier/iut/JeuPuzzle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/umontpellier/iut/Sudoku.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/umontpellier/iut/Taquin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/fr/umontpellier/iut/HanoiTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/fr/umontpellier/iut/SudokuTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +33,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../BD_S2_TP1" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -126,7 +112,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1648400187095</updated>
-      <workItem from="1648400189020" duration="5466000" />
+      <workItem from="1648400189020" duration="6166000" />
     </task>
     <servers />
   </component>

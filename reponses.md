@@ -3,5 +3,6 @@
 
 3)je vais tenter d'insérer les objets avec HashSet, il va pourvoir
 faire des comparaisons à l'aide des hashcode et décider d'ajouter 
-l'élement ou pas
+l'élement ou pas, ce temps libéré va nous permettre de gagner en efficacité
+et eviter de parcourir la liste à chaque fois
 
