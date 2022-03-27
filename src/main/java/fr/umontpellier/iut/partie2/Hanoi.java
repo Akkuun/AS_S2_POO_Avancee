@@ -41,7 +41,7 @@ public class Hanoi implements JeuPuzzle {
         this.tour_1 = tour1;
         this.tour_2 = tour2;
         this.tour_3 = tour3;
-        this.taille = 3;
+        this.taille = taille;
 
     }
 
