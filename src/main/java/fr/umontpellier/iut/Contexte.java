@@ -1,6 +1,8 @@
 package fr.umontpellier.iut;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Contexte {
 
@@ -17,7 +19,7 @@ public class Contexte {
         int compteur = 0;
         ArrayList<Couple> frontiere = new ArrayList<>();
 
-        ArrayList<JeuPuzzle> dejaVus = new ArrayList<>();
+        Set<JeuPuzzle> dejaVus = new HashSet<>();
         Couple couple = new Couple(jeuInitial, null);
         frontiere.add(couple);
         dejaVus.add(jeuInitial);

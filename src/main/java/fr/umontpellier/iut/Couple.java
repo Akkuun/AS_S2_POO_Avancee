@@ -2,6 +2,7 @@ package fr.umontpellier.iut;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Set;
 
 public class Couple {
 
@@ -13,12 +14,12 @@ public class Couple {
         this.predecesseur = predecesseur;
     }
 
-    public void mettreAJour(ArrayList<Couple> frontiere, ArrayList<JeuPuzzle> dejaVus) {
+    public void mettreAJour(ArrayList<Couple> frontiere, Set<JeuPuzzle> dejaVus) {
 
        ArrayList<? extends JeuPuzzle> fils= jeuxInitial.genererFils(); //on génère les fils du taquin
         for (JeuPuzzle jeux:fils) { //on parcours tout les taquin fils
-            if (!dejaVus.contains(jeux)){ //si deja vu ne contient pas le taquin fils
-                dejaVus.add(jeux); //on l'ajoute dans déjà vu
+            if (dejaVus.add(jeux)){ //si deja vu ne contient pas le taquin fils
+                //on l'ajoute dans déjà vu
                 frontiere.add(new Couple(jeux,this)); //et on ajoute dans le frontier le nouveau couple
                 //du fils avec this en prédécesseur
             }
